@@ -1,0 +1,37 @@
+@startuml
+skinparam classAttributeIconSize 0
+
+TaskList *-- Task
+Task *-- Activity
+Activity *-- "2" Date
+
+class TaskList {
+  -List<Task> taskList
+  +List<Task> getActiveTasks()
+  +List<Task> getArchivedTasks()
+  +int getLast24h()
+  +int getLast7d()
+  +void addTask()
+  +void deleteTask()
+}
+
+class Task {
+  -String name
+  -List<Activity> timesActive
+  -boolean archived
+  +String getName()
+  +void setName()
+  +boolean isArchived()
+  +void setArchive()
+  +void addActivity()  
+}
+
+class Activity {
+  -Date startDate
+  -Date endDate
+}
+
+class Date {
+
+}
+@enduml
