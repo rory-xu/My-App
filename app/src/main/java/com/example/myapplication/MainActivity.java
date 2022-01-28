@@ -1,26 +1,31 @@
 package com.example.myapplication;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
 
-public class MainActivity extends AppCompatActivity {
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 
-    public static final String EXTRA_MESSAGE = "com.example.myapplication.Message";
+public class MainActivity extends AppCompatActivity {
+    TaskListViewAdapter adapter;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ArrayList<Task> activeTasks = new ArrayList<>();
+        activeTasks.add(new Task("Task 1"));
+
+        RecyclerView recyclerView = findViewById(R.id.taskList);
+        adapter = new TaskListViewAdapter(this, activeTasks);
+        recyclerView.setAdapter(adapter);
     }
 
-    public void sendMessage(View view) {
-        Intent intent = new Intent(this, DisplayMessageActivity.class);
-        EditText editText = (EditText) findViewById(R.id.editTextTextPersonName);
-        String message = editText.getText().toString();
-        intent.putExtra(EXTRA_MESSAGE, message);
-        startActivity(intent);
-    }
 }
