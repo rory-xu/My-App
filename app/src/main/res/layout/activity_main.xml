@@ -7,6 +7,9 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/taskList"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="582dp"
+        android:background="@android:color/darker_gray"
+        android:padding="4dp"
+        android:scrollbars="vertical" />
 
 </RelativeLayout>
